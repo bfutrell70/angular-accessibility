@@ -6,13 +6,16 @@
   </a>
   <nav>
     <ul>
-      <li><a href="" class="menu-option">Home</a></li>
+      <li>
+        <a href="" class="menu-option">Home</a>
+      </li>
       <li>
         <button
           (keydown.escape)="selectCategory('none')"
           (click)="toggleMenu()"
           role="link"
-          class="menu-option">Products
+          class="menu-option">
+          Products
           <span
             [class.rotated-arrow-icon]="showMenu"
             class="arrow-icon"></span>
