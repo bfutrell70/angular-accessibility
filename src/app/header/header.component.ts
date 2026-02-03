@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LINKS } from '../models/category';
 import { ROUTE_TOKENS } from '../models/route-tokens';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   standalone: true,
@@ -16,6 +17,7 @@ export class HeaderComponent {
   showMenu = false;
   readonly LINKS = LINKS;
   readonly ROUTE_TOKENS = ROUTE_TOKENS;
+  protected readonly cartService = inject(CartService);
 
   readonly menuItemOne = 'Menu Item One';
   readonly logoUrl = '../../assets/images/justlikepeople.png';
