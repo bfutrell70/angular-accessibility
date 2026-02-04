@@ -37,15 +37,7 @@
               [attr.aria-label]="item.title + ' quantity in cart: ' + item.quantity "
               class="cart-item-name"
             >{{ item.title }}</h4>
-            <div class="quantity-selector-wrapper">
-              <div class="quantity-selector-wrapper">
-                <div class="quantity-selector">
-                  <button (click)="cartService.decrementCartItem(item.id)">-</button>
-                  <span>{{ item.quantity }}</span>
-                  <button (click)="cartService.addCartItem(item.id)">+</button>
-                </div>
-              </div>
-            </div>
+            <app-add-to-cart-button appJlpButton [productId]="item.id" numberOnly></app-add-to-cart-button>
             <p class="cart-item-price">{{ (item.price * (item.quantity || 1)) | currency }}</p>
           </div>
         } @empty {
@@ -74,7 +66,7 @@
           @if(loading) {
             <div>Processing...</div>
           } @else {
-            <button
+            <button appJlpBorderButton
               input="submit"
               (click)="checkout()"
               [disabled]="cartService.subtotal() === 0"
