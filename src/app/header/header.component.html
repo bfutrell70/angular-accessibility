@@ -13,6 +13,8 @@
       <li>
         <a
           [routerLink]="[ '/' + ROUTE_TOKENS.home]"
+          routerLinkActive="selected-item"
+          ariaCurrentWhenActive="page"
           class="menu-option"
         >Home</a>
       </li>
@@ -30,6 +32,7 @@
           ></span></button>
         <ul
           [class.show-submenu]="showMenu"
+          routerLinkActive="selected-item"
           class="collapsible-content"
         >
           @if(showMenu) {
@@ -38,6 +41,8 @@
                 <a
                   class="link"
                   [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
+                  routerLinkActive="selected-sub-item"
+                  ariaCurrentWhenActive="page"
                   [queryParams]="{ productId: link.firstProduct }"
                   (click)="selectCategory(link.category)"
                   (keydown.escape)="selectCategory('none')"
@@ -46,12 +51,19 @@
                 </a>
               </li>
             }
+          } @else {
+            <li 
+              [routerLink]="['/' + ROUTE_TOKENS.products]"
+              tabindex="-1">
+            </li>
           }
         </ul>
       </li>
       <li>
         <a
           [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
+          routerLinkActive="selected-item"
+          class="collapsible-content"
           class="menu-option"
         >Contact</a>
       </li>

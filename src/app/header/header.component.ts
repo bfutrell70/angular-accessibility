@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LINKS } from '../models/category';
 import { ROUTE_TOKENS } from '../models/route-tokens';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./header.component.scss'],
   imports: [
     RouterLink,
+    RouterLinkActive,
   ]
 })
 export class HeaderComponent {
