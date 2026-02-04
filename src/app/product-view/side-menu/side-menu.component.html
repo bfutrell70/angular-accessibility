@@ -1,8 +1,12 @@
 <nav class="side-nav">
-  <ul>
+  <ul
+    routerLinkActive="selected-item"
+  >
     @for(product of products(); track product.id) {
       <li
         [routerLink]="['./']"
+        routerLinkActive="selected-sub-item"
+        ariaCurrentWhenActive="page"
         [queryParams]="{
           productId: product.id
         }"

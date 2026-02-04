@@ -1,5 +1,10 @@
 <header class="site-header">
-  <a class="home-logo" [routerLink]="['/' + ROUTE_TOKENS.home]">
+  <a 
+    class="home-logo" 
+    [routerLink]="['/' + ROUTE_TOKENS.home]"
+    ariaCurrentWhenActive="page"
+    routerLinkActive="selected-item"
+  >
     <img
       [src]="logoUrl"
       alt="Home - Just Like People" />
@@ -9,7 +14,9 @@
       <li>
         <a href="" class="menu-option">Home</a>
       </li>
-      <li>
+      <li
+        routerLinkActive="selected-item"
+      >
         <button
           (keydown.escape)="selectCategory('none')"
           (click)="toggleMenu()"
@@ -29,6 +36,8 @@
               <li class="content-inner">
                 <a
                   [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
+                  routerLinkActive="selected-sub-item"
+                  ariaCurrentWhenActive="page"
                   (click)="selectCategory(link.category)"
                   (keydown.escape)="selectCategory('none')"
                   class="link"
@@ -37,10 +46,21 @@
                 </a>
               </li>
             }
+          } @else {
+            <li [routerLink]="['/' + ROUTE_TOKENS.products]" tabindex="-1"></li>
           }
         </ul>
       </li>
-      <li><a [routerLink]="[ '/' + ROUTE_TOKENS.contact]" class="menu-option">Contact</a></li>
+      <li>
+        <a 
+          [routerLink]="[ '/' + ROUTE_TOKENS.contact]" 
+          routerLinkActive="selected-item"
+          ariaCurrentWhenActive="page"
+          class="menu-option"
+        >
+          Contact
+        </a>
+      </li>
     </ul>
   </nav>
 
