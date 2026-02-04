@@ -61,14 +61,14 @@ describe('AddToCartButtonComponent', () => {
     // click buttons
     await user.click(subtractButton);
     expect(mockCartService.decrementCartItem).toHaveBeenCalledTimes(1);
-    expect(mockCartService.decrementCartItem).toHaveBeenCalledWith(productId);
+    expect(mockCartService.decrementCartItem).toHaveBeenNthCalledWith(1, productId);
 
     await user.click(middleButton);
     expect(mockCartService.addCartItem).toHaveBeenCalledTimes(1);
-    expect(mockCartService.addCartItem).toHaveBeenCalledWith(productId);
+    expect(mockCartService.addCartItem).toHaveBeenNthCalledWith(1, productId);
 
     await user.click(addButton);
     expect(mockCartService.addCartItem).toHaveBeenCalledTimes(2);
-    expect(mockCartService.addCartItem).toHaveBeenCalledWith(productId);
+    expect(mockCartService.addCartItem).toHaveBeenNthCalledWith(2, productId);
   })
 });
