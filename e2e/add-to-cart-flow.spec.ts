@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright';
 import { test, expect } from '@playwright/test';
 
 test('navigates to product view and adds item to cart', async ({ page }) => {
@@ -30,3 +31,37 @@ test('navigates to product view and adds item to cart', async ({ page }) => {
   const quantityButton = addedItem.getByRole('button').filter({ hasText: '2'});
   await expect(quantityButton).toBeVisible();
 });
+
+test.describe("Axe test", () => {
+  test('home should not have any automatically detectable accessibility issues', async ({page}) => {
+    await page.goto("http://localhost:4200"); // 3
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();  // 4
+
+    expect(accessibilityScanResults.violations).toEqual([]);  // 5
+  });
+
+  test('cart should not have any automatically detectable accessibility issues', async ({page}) => {
+    await page.goto("http://localhost:4200/cart"); // 3
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();  // 4
+
+    expect(accessibilityScanResults.violations).toEqual([]);  // 5
+  });
+
+  test('contact should not have any automatically detectable accessibility issues', async ({page}) => {
+    await page.goto("http://localhost:4200/contact"); // 3
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();  // 4
+
+    expect(accessibilityScanResults.violations).toEqual([]);  // 5
+  });
+
+  test('products should not have any automatically detectable accessibility issues', async ({page}) => {
+    await page.goto("http://localhost:4200/products"); // 3
+
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();  // 4
+
+    expect(accessibilityScanResults.violations).toEqual([]);  // 5
+  });
+})
